@@ -1,0 +1,25 @@
+{
+  "env": {
+    "webextensions": true,
+    "browser": true,
+    "worker": true,
+    "es2022": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "tsconfig.json"
+  },
+  "plugins": ["react", "jest"],
+  "rules": {},
+  "globals": {
+    "chrome": true
+  }
+}

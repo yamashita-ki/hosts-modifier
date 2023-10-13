@@ -1,33 +1,5 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-pnpm dev
-# or
-npm run dev
-```
-
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
-
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
-
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
-
-## Making production build
-
-Run the following:
-
-```bash
-pnpm build
-# or
-npm run build
-```
-
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
-
-## Submit to the webstores
-
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+- <img alt="TypeScript" src="https://github-production-user-asset-6210df.s3.amazonaws.com/53377829/274019494-de81a0a2-94e9-4ec9-aa0b-4c52f932ab6f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231010%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231010T180510Z&X-Amz-Expires=300&X-Amz-Signature=8b78ede510e2cfd2f0a98d95ffaa34d5b29a067c8d708322cde24bb08c74eed1&X-Amz-SignedHeaders=host&actor_id=53377829&key_id=0&repo_id=703163523" height="16"> **[TypeScript](https://www.typescriptlang.org/)**
+- <img alt="React" src="https://github-production-user-asset-6210df.s3.amazonaws.com/53377829/274020114-86b3b9c9-d3af-4980-ba49-dbdb39d5655c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231010%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231010T180605Z&X-Amz-Expires=300&X-Amz-Signature=8f0437cf21e589a806cddfe5e8c892faf43a2351999ad405f00de7b93b136aa5&X-Amz-SignedHeaders=host&actor_id=53377829&key_id=0&repo_id=703163523" height="16"> **[React](https://reactjs.org)**
+- <img alt="plasmo" src="https://github-production-user-asset-6210df.s3.amazonaws.com/53377829/274020403-dab65600-477d-4b3e-8194-80d668fc4e5c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231010%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231010T180729Z&X-Amz-Expires=300&X-Amz-Signature=4539ee7f6b616fd035e81b714791e880e8fa5819827fb1e2e6e5525cf005c896&X-Amz-SignedHeaders=host&actor_id=53377829&key_id=0&repo_id=703163523" height="16"> **[plasmo](https://docs.plasmo.com/)**
+- <img alt="mui" src="https://github-production-user-asset-6210df.s3.amazonaws.com/53377829/274020885-909635b4-62ea-428f-bfa4-00aa30c9e2ab.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231010%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231010T180914Z&X-Amz-Expires=300&X-Amz-Signature=610d7c8be618c2ba7e41596e170cc5e2d498c5bafe862ae24a36236ceddffccb&X-Amz-SignedHeaders=host&actor_id=53377829&key_id=0&repo_id=703163523" height="16"> **[MUI](https://mui.com/)**
+- <img alt="Jest" src="" height="16"> **[Jest](https://jestjs.io/)**

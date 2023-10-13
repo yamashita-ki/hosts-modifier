@@ -1,18 +1,32 @@
 {
   "extends": "plasmo/templates/tsconfig.base",
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "include": [
     ".plasmo/index.d.ts",
     "./**/*.ts",
-    "./**/*.tsx"
+    "./**/*.tsx",
+    "background.ts",
+    "jest.*.js",
+    "__tests__/*.test.ts"
   ],
   "compilerOptions": {
+    "module": "esnext",
+    "target": "es6",
+    "useDefineForClassFields": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "types": ["chrome", "node", "jest", "mocha"],
     "paths": {
-      "~*": [
-        "./*"
-      ]
+      "@/*": ["*"]
     },
     "baseUrl": "."
   }

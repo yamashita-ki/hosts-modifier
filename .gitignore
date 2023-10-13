@@ -27,7 +27,11 @@ build/
 dist/
 
 # plasmo
-.plasmo
+.plasmo/*
+!.plasmo/rules.json
 
 # typescript
 .tsbuildinfo
+
+# eslint
+.eslintcache

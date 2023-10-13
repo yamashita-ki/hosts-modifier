@@ -1,28 +1,17 @@
-import { useState } from "react"
+import Host from '@/components/Host'
+import HostList from '@/components/HostList'
+import { HostsProvider } from '@/components/HostsContext'
+import React, { useState } from 'react'
 
-function IndexPopup() {
-  const [data, setData] = useState("")
-
+const IndexPopup: React.FC = () => {
+  const [selectedHostId, setSelectedHostId] = useState<string | null>(null)
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: 16
-      }}>
-      <h2>
-        Welcome to your
-        <a href="https://www.plasmo.com" target="_blank">
-          {" "}
-          Plasmo
-        </a>{" "}
-        Extension!
-      </h2>
-      <input onChange={(e) => setData(e.target.value)} value={data} />
-      <a href="https://docs.plasmo.com" target="_blank">
-        View Docs
-      </a>
-    </div>
+    <HostsProvider>
+      <div style={{ display: 'flex', height: '100vh' }}>
+        <HostList setSelectedHostId={setSelectedHostId} />
+        <Host selectedHostId={selectedHostId} />
+      </div>
+    </HostsProvider>
   )
 }
 

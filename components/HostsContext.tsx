@@ -46,11 +46,7 @@ const hostsReducer: React.Reducer<HostStorage, Action> = (state, action) => {
     name: 'New Host',
     editable: true
   }
-  let filteredHosts:
-  
-  
-
-  Host[]
+  let filteredHosts: Host[]
   let latestHost: Host
   let updatedHosts: Host[]
   switch (action.type) {

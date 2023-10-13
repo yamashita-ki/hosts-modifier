@@ -8,7 +8,8 @@
     "dev": "plasmo dev",
     "build": "plasmo build",
     "test": "jest --config=jest.unit.config.js",
-    "format": "eslint . --fix --cache --ext  .js,.ts,.tsx --env webextensions,node,es2022 --global chrome && prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    "format": "eslint . --fix --cache --ext  .js,.ts,.tsx --env webextensions,node,es2022 --global chrome && prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
@@ -26,8 +27,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
+      "pnpm format"
     ]
   },
   "husky": {
@@ -54,7 +54,7 @@
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.33.2",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "jest": "^29.7.0",
     "lint-staged": "^14.0.1",
     "prettier": "3.0.3",

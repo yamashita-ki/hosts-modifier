@@ -3,7 +3,7 @@ import type { HostStorage } from '@/interfaces/HostStorage'
 
 export function updateRules(): void {
   chrome.storage.local.get(['hosts'], (result: HostStorage) => {
-    const hosts = Array.isArray(result.hosts) ? result.hosts : [];
+    const hosts = Array.isArray(result.hosts) ? result.hosts : []
     const activeHosts = hosts.filter((host: Host) => host.active) || []
     let ruleIdCounter = 1
     const newRules: chrome.declarativeNetRequest.Rule[] | undefined = []

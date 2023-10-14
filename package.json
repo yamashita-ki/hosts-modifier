@@ -2,7 +2,7 @@
   "name": "hosts-modifier",
   "displayName": "Hosts modifier",
   "version": "0.0.1",
-  "description": "Hosts Modifier allows you to effortlessly redirect domain requests without the need to modify your hosts file. Achieve seamless domain redirection with just a few clicks, bypassing the hassle of manually editing system files. Ideal for developers and users who require flexible and quick domain switching.",
+  "description": "Hosts Modifier allows you to effortlessly redirect domain requests without the need to modify your hosts file.",
   "author": "kiyoshi.yamashita",
   "scripts": {
     "dev": "plasmo dev",

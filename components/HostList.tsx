@@ -9,8 +9,7 @@ const HostList: React.FC<HostListProps> = ({ setSelectedHostId }) => {
   const { state, dispatch } = useHosts()
   const [editingHostId, setEditingHostId] = useState<string | null>(null)
   const [newName, setNewName] = useState<string>('')
-  const activeHost = state.hosts.find((host) => host.active)
-  const selectedHostId = activeHost ? activeHost.id : null
+  const selectedHostIdList = state.hosts.filter((host) => host.active).map((host) => host.id)
 
   const handleHostClick = (hostId: string) => {
     setSelectedHostId(hostId)
@@ -83,7 +82,8 @@ const HostList: React.FC<HostListProps> = ({ setSelectedHostId }) => {
                   backgroundColor: host.active ? '#ced4da' : '#e9ecef',
                   color: host.active ? '#0d6efd' : '#495057',
                   width: '100%',
-                  border: 'none'
+                  border: 'none',
+                  textTransform: 'none',
                 }}>
                 {host.active ? (
                   <Tooltip title="active">
@@ -106,7 +106,7 @@ const HostList: React.FC<HostListProps> = ({ setSelectedHostId }) => {
         style={{ width: '100%' }}>
         Add Host
       </Button>
-      {selectedHostId !== null && selectedHostId !== '00000-info' && (
+      {selectedHostIdList.length > 0  && (
         <Button
           style={{
             color: '#fff',
@@ -116,7 +116,7 @@ const HostList: React.FC<HostListProps> = ({ setSelectedHostId }) => {
             border: 'none'
           }}
           onClick={() => {
-            dispatch({ type: 'REMOVE_HOST', hostId: selectedHostId })
+            dispatch({ type: 'REMOVE_HOST', hostIdList: selectedHostIdList })
           }}>
           Remove Host
         </Button>

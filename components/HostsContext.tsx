@@ -5,8 +5,7 @@ import React, {
   createContext,
   useContext,
   useEffect,
-  useReducer,
-  useState
+  useReducer
 } from 'react'
 import { ulid } from 'ulid'
 
@@ -26,7 +25,7 @@ const initialState: HostStorage = {
     {
       id: ulid(),
       active: true,
-      rules: '127.0.0.1 hoge.com',
+      rules: '',
       name: 'New Host',
       editable: true
     }
@@ -47,8 +46,6 @@ const hostsReducer: React.Reducer<HostStorage, Action> = (state, action) => {
     editable: true
   }
   let filteredHosts: Host[]
-  let latestHost: Host
-  let updatedHosts: Host[]
   switch (action.type) {
     case 'ADD_HOST':
       chrome.storage.local.get(['hosts'], (result: HostStorage) => {
@@ -60,28 +57,13 @@ const hostsReducer: React.Reducer<HostStorage, Action> = (state, action) => {
         ...state,
         hosts: [...state.hosts, newHost]
       }
-    case 'REMOVE_HOST':
-      chrome.storage.local.get(['hosts'], (result: HostStorage) => {
-        const currentHosts = result.hosts || []
-        const updatedHosts = currentHosts.filter(
-          (host: Host) => host.id !== action.hostId
-        )
-        chrome.storage.local.set({ hosts: updatedHosts })
-      })
-      filteredHosts = state.hosts.filter(
-        (host: Host) => host.id !== action.hostId
-      )
-      if (filteredHosts.length === 0) return { hosts: initialState.hosts }
-
-      latestHost = filteredHosts[0]
-
-      updatedHosts = filteredHosts.map((host) =>
-        host.id === latestHost.id && host.id != '00000-info'
-          ? { ...host, active: true }
-          : { ...host, active: false }
-      )
-
-      return { ...state, hosts: updatedHosts }
+      case 'REMOVE_HOST':
+        filteredHosts = state.hosts.filter(
+          (host: Host) => !action.hostIdList?.includes(host.id)
+        );
+        chrome.storage.local.set({ hosts: filteredHosts });
+        if (filteredHosts.length === 0) return { hosts: initialState.hosts };
+        return { ...state, hosts: filteredHosts };
     case 'TOGGLE_HOST':
       newState = {
         ...state,
@@ -127,34 +109,31 @@ const hostsReducer: React.Reducer<HostStorage, Action> = (state, action) => {
 }
 
 export const HostsProvider: React.FC<Props> = ({ children }) => {
-  const [state, dispatch] = useReducer(hostsReducer, initialState)
-  const [loading, setLoading] = useState(true)
+  const [state, dispatch] = useReducer(hostsReducer, initialState);
 
   useEffect(() => {
     const fetchHosts = async () => {
       const result = await new Promise<{ hosts: Host[] }>((resolve) => {
         chrome.storage.local.get(['hosts'], (data: HostStorage) => {
-          resolve(data as { hosts: Host[] })
-        })
-      })
+          resolve(data as { hosts: Host[] });
+        });
+      });
 
-      if (result.hosts?.length > 0) {
-        dispatch({ type: 'INITIALIZE_HOST', hosts: result.hosts })
+      if (result.hosts) {
+        dispatch({ type: 'INITIALIZE_HOST', hosts: result.hosts });
       }
-      setLoading(false)
-    }
+    };
 
-    fetchHosts()
-  }, [])
-  if (loading) {
-    return <div>Loading...</div>
-  }
+    fetchHosts();
+  }, []);
+
   return (
     <HostsContext.Provider value={{ state, dispatch }}>
       {children}
     </HostsContext.Provider>
-  )
+  );
 }
+
 
 export const useHosts = () => {
   const context = useContext(HostsContext)

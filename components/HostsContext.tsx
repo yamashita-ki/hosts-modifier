@@ -58,9 +58,9 @@ const hostsReducer: React.Reducer<HostStorage, Action> = (state, action) => {
         hosts: [...state.hosts, newHost]
       }
       case 'REMOVE_HOST':
-        filteredHosts = state.hosts.filter(
+        filteredHosts = (state?.hosts || []).filter(
           (host: Host) => !action.hostIdList?.includes(host.id)
-        );
+        ) ?? [];
         chrome.storage.local.set({ hosts: filteredHosts });
         if (filteredHosts.length === 0) return { hosts: initialState.hosts };
         return { ...state, hosts: filteredHosts };

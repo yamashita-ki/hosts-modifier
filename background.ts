@@ -10,7 +10,6 @@ export function updateRules(): void {
     for (const host of activeHosts) {
       const lines = host.rules.split('\n')
       for (const line of lines) {
-        console.log(line)
         const pairs: string[] = line
           .split(' ')
           .filter((pair: string) => pair.trim() !== '')

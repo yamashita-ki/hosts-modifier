@@ -1,9 +1,9 @@
 import { useHosts } from '@/components/HostsContext'
-import StyledText from '@/components/StyledText'
 import type { Host } from '@/interfaces/Host'
 import type { RuleInputProps } from '@/interfaces/RuleInputProps'
 import { Textarea } from '@mui/joy'
 import React from 'react'
+import parse from 'html-react-parser';
 
 const RuleInput: React.FC<RuleInputProps> = ({ hostId, placeholder }) => {
   const { state, dispatch } = useHosts()
@@ -58,9 +58,7 @@ const RuleInput: React.FC<RuleInputProps> = ({ hostId, placeholder }) => {
     <>
       {hostId === '00000-info' ? (
         <div style={{ width: '50vh', height: '50vh', fontSize: '14px' }}>
-          <StyledText
-            text={'# Thank you for adding the extension \n # Have a great day!'}
-          />
+            {parse('<h2>How to use</h2> <p>Each entry should be kept on an individual line.<br/>The host name should come after the IP address, which is positioned in the initial column.<br/> ex) 127.0.0.1 sample.com<br/>Furthermore, lines starting with a "#" will be ignored. </p> <p>Thanks you for adding this extension🚀</p><a href="https://github.com/yamashita-ki/hosts-modifier">Github</p>')}
         </div>
       ) : (
         <Textarea

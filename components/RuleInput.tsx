@@ -7,7 +7,7 @@ import parse from 'html-react-parser';
 
 const RuleInput: React.FC<RuleInputProps> = ({ hostId, placeholder }) => {
   const { state, dispatch } = useHosts()
-  const selectedHost = state.hosts.find((host: Host) => host.id === hostId)
+  const selectedHost = (Array.isArray(state?.hosts) ? state.hosts : []).find((host: Host) => host.id === hostId)
   const selectedHostRules = selectedHost ? selectedHost.rules : ''
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     dispatch({ type: 'UPDATE_RULES', hostId, rules: e.target.value })

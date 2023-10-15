@@ -9,7 +9,7 @@ const HostList: React.FC<HostListProps> = ({ setSelectedHostId }) => {
   const { state, dispatch } = useHosts()
   const [editingHostId, setEditingHostId] = useState<string | null>(null)
   const [newName, setNewName] = useState<string>('')
-  const selectedHostIdList = (state?.hosts || []).filter((host) => host.active).map((host) => host.id)
+  const selectedHostIdList = (Array.isArray(state?.hosts) ? state.hosts : []).filter((host) => host.active).map((host) => host.id)
 
   const handleHostClick = (hostId: string) => {
     setSelectedHostId(hostId)
@@ -53,7 +53,7 @@ const HostList: React.FC<HostListProps> = ({ setSelectedHostId }) => {
         padding: '10px',
         backgroundColor: '#f4f4f4'
       }}>
-      {(state?.hosts || [])
+      {(Array.isArray(state.hosts) ? state.hosts : [])
         .sort((a, b) => a.id.localeCompare(b.id))
         .map((host) => (
           <div

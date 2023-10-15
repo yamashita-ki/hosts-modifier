@@ -46,19 +46,21 @@ const hostsReducer: React.Reducer<HostStorage, Action> = (state, action) => {
     editable: true
   }
   let filteredHosts: Host[]
+  let hosts;
   switch (action.type) {
     case 'ADD_HOST':
       chrome.storage.local.get(['hosts'], (result: HostStorage) => {
-        const currentHosts = result.hosts || []
+        const currentHosts = Array.isArray(result.hosts) ? result.hosts : [];
         const updatedHosts = [...currentHosts, newHost]
         chrome.storage.local.set({ hosts: updatedHosts })
       })
+      hosts = Array.isArray(state.hosts) ? state.hosts : [];
       return {
         ...state,
-        hosts: [...state.hosts, newHost]
+        hosts: [...hosts, newHost]
       }
       case 'REMOVE_HOST':
-        filteredHosts = (state?.hosts || []).filter(
+        filteredHosts = (Array.isArray(state?.hosts) ? state.hosts : []).filter(
           (host: Host) => !action.hostIdList?.includes(host.id)
         ) ?? [];
         chrome.storage.local.set({ hosts: filteredHosts });
@@ -83,7 +85,7 @@ const hostsReducer: React.Reducer<HostStorage, Action> = (state, action) => {
           host.id === action.hostId ? { ...host, rules: action.rules } : host
         )
       }
-      chrome.storage.local.set({ hosts: newState })
+      chrome.storage.local.set({ hosts: newState.hosts })
       return newState
     case 'RENAME_HOST':
       newState = {

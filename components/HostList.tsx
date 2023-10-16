@@ -9,7 +9,9 @@ const HostList: React.FC<HostListProps> = ({ setSelectedHostId }) => {
   const { state, dispatch } = useHosts()
   const [editingHostId, setEditingHostId] = useState<string | null>(null)
   const [newName, setNewName] = useState<string>('')
-  const selectedHostIdList = (Array.isArray(state?.hosts) ? state.hosts : []).filter((host) => host.active).map((host) => host.id)
+  const selectedHostIdList = (Array.isArray(state?.hosts) ? state.hosts : [])
+    .filter((host) => host.active)
+    .map((host) => host.id)
 
   const handleHostClick = (hostId: string) => {
     setSelectedHostId(hostId)
@@ -83,7 +85,7 @@ const HostList: React.FC<HostListProps> = ({ setSelectedHostId }) => {
                   color: host.active ? '#0d6efd' : '#495057',
                   width: '100%',
                   border: 'none',
-                  textTransform: 'none',
+                  textTransform: 'none'
                 }}>
                 {host.active ? (
                   <Tooltip title="active">

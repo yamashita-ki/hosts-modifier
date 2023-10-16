@@ -1,14 +1,15 @@
 ## Features
+
 - Host Management:
-    - Easily manage and switch between different hosts. Each host can have its own set of rules, allowing for flexible configurations
+  - Easily manage and switch between different hosts. Each host can have its own set of rules, allowing for flexible configurations
 - Active Host Highlighting:
-    - Clearly see which host is currently active with visual indicators
+  - Clearly see which host is currently active with visual indicators
 - Quick Toggle:
-    - Quickly activate or deactivate a host with a single click, streamlining the process of switching between different environments
+  - Quickly activate or deactivate a host with a single click, streamlining the process of switching between different environments
 - Rule Editing:
-    - Modify the rules associated with each host directly from the extension. This includes adding, editing, or removing specific IP and domain mappings
+  - Modify the rules associated with each host directly from the extension. This includes adding, editing, or removing specific IP and domain mappings
 - Persistent Storage:
-    - All host configurations and rules are stored persistently in the browser's local storage, ensuring that your settings are retained even after restarting the browser.
+  - All host configurations and rules are stored persistently in the browser's local storage, ensuring that your settings are retained even after restarting the browser.
 
 ## Programming language or framework used
 

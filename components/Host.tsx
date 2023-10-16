@@ -6,9 +6,9 @@ import React, { useContext } from 'react'
 
 const Host: React.FC<HostProps> = ({ selectedHostId }) => {
   const { state } = useContext(HostsContext)!
-  const selectedHost: Host | undefined = (Array.isArray(state?.hosts) ? state.hosts : []).find(
-    (host: { id: string }) => host.id === selectedHostId
-  )
+  const selectedHost: Host | undefined = (
+    Array.isArray(state?.hosts) ? state.hosts : []
+  ).find((host: { id: string }) => host.id === selectedHostId)
   const selectedHostRules = selectedHost ? selectedHost.rules : null
 
   return (

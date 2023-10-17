@@ -1,3 +1,7 @@
+## Download
+
+https://chrome.google.com/webstore/detail/hosts-modifier/cmjkafkhlfpegnlhphhbpfbdblmkmden?hl=ja&authuser=0
+
 ## Features
 
 - Host Management:
@@ -10,6 +14,9 @@
   - Modify the rules associated with each host directly from the extension. This includes adding, editing, or removing specific IP and domain mappings
 - Persistent Storage:
   - All host configurations and rules are stored persistently in the browser's local storage, ensuring that your settings are retained even after restarting the browser.
+
+<img width="350" src=./assets/screenshot-2.png />
+<img width="350" src=./assets/screenshot-1.png />
 
 ## Programming language or framework used
 

@@ -61,7 +61,7 @@ const RuleInput: React.FC<RuleInputProps> = ({ hostId, placeholder }) => {
       {hostId === '00000-info' ? (
         <div style={{ width: '50vh', height: '50vh', fontSize: '14px' }}>
           {parse(
-            '<h2>How to use</h2> <p>Each entry should be kept on an individual line.<br/>The host name should come after the IP address, which is positioned in the initial column.<br/> ex) 127.0.0.1 sample.com<br/>Furthermore, lines starting with a "#" will be ignored. </p> <p>Thanks you for adding this extension🚀</p>'
+            '<h2>How to use</h2> <p>Each entry should be kept on a separate line.<br/>The host name should come after the IP address, which is positioned in the initial column.<br/> ex) 127.0.0.1 sample.com<br/>Furthermore, lines starting with a "#" will be ignored. </p> <p>Thank you for adding this extension🚀</p>'
           )}
         </div>
       ) : (
